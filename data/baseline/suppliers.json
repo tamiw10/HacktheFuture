@@ -1,0 +1,30 @@
+[
+  {
+    "supplier_id": "SUP001",
+    "supplier_name": "Monterra Components",
+    "country": "Mexico",
+    "region": "Northern Mexico",
+    "status": "primary",
+    "approved": true,
+    "parts_supplied": ["PART001"]
+  },
+  {
+    "supplier_id": "SUP002",
+    "supplier_name": "Apex Reserve Supply",
+    "country": "Canada",
+    "region": "Ontario",
+    "status": "primary",
+    "approved": true,
+    "parts_supplied": ["PART001"]
+  },
+  {
+    "supplier_id": "SUP003",
+    "supplier_name": "Great Lakes Backup Manufacturing",
+    "country": "USA",
+    "region": "Michigan",
+    "status": "backup",
+    "approved": true,
+    "parts_supplied": ["PART001"]
+  }
+]
+

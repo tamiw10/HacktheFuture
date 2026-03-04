@@ -1,0 +1,24 @@
+[
+  {
+    "shipment_id": "SHIP001",
+    "manufacturer_id": "MFG001",
+    "supplier_id": "SUP001",
+    "part_id": "PART001",
+    "destination_plant_id": "PLANT001",
+    "status": "in_transit",
+    "delay_days": 0,
+    "expedite_available": true,
+    "expedite_cost_increase_pct": 22
+  },
+  {
+    "shipment_id": "SHIP002",
+    "manufacturer_id": "MFG002",
+    "supplier_id": "SUP002",
+    "part_id": "PART001",
+    "destination_plant_id": "PLANT002",
+    "status": "in_transit",
+    "delay_days": 0,
+    "expedite_available": true,
+    "expedite_cost_increase_pct": 22
+  }
+]

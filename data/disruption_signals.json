@@ -1,0 +1,65 @@
+[
+  {
+    "signal_id": "WX-20260304234337",
+    "signal_type": "weather_alert",
+    "severity": "medium",
+    "summary": "Severe weather affecting cross-border logistics operations.",
+    "affected_regions": [
+      "Mexico",
+      "North America"
+    ],
+    "affected_supplier_ids": [],
+    "affected_shipment_ids": [
+      "SHIP002",
+      "SHIP001"
+    ],
+    "estimated_delay_days": 2,
+    "received_at": "2026-03-04T23:43:37.695333+00:00"
+  },
+  {
+    "signal_id": "BRD-20260304234337",
+    "signal_type": "border_congestion",
+    "severity": "medium",
+    "summary": "Border congestion causing customs processing delays.",
+    "affected_regions": [
+      "Mexico",
+      "North America"
+    ],
+    "affected_supplier_ids": [],
+    "affected_shipment_ids": [
+      "SHIP002",
+      "SHIP001"
+    ],
+    "estimated_delay_days": 1,
+    "received_at": "2026-03-04T23:43:37.696355+00:00"
+  },
+  {
+    "signal_id": "SUP-20260304234337",
+    "signal_type": "supplier_notice",
+    "severity": "high",
+    "summary": "SUP001 reports reduced output for Brake Control Module BCM-47.",
+    "affected_regions": [],
+    "affected_supplier_ids": [
+      "SUP001"
+    ],
+    "affected_shipment_ids": [
+      "SHIP001"
+    ],
+    "estimated_delay_days": 1,
+    "received_at": "2026-03-04T23:43:37.696740+00:00"
+  },
+  {
+    "signal_id": "SHIP-20260304234337",
+    "signal_type": "shipping_delay_update",
+    "severity": "medium",
+    "summary": "Carrier reports route congestion affecting SHIP001 and SHIP002.",
+    "affected_regions": [],
+    "affected_supplier_ids": [],
+    "affected_shipment_ids": [
+      "SHIP002",
+      "SHIP001"
+    ],
+    "estimated_delay_days": 2,
+    "received_at": "2026-03-04T23:43:37.697059+00:00"
+  }
+]

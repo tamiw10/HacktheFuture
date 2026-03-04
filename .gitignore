@@ -1,0 +1,32 @@
+# Environment and secrets
+.env
+*.env
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ADK / IDE
+.adk/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# Project-specific
+session.db
+*.log

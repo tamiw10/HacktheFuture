@@ -1,0 +1,32 @@
+[
+  {
+    "action_type": "draft_escalation_message",
+    "auto_allowed": true,
+    "requires_human_approval": false,
+    "reason": "Internal drafting is low risk."
+  },
+  {
+    "action_type": "draft_supplier_email",
+    "auto_allowed": true,
+    "requires_human_approval": true,
+    "reason": "External supplier communication requires human review before sending."
+  },
+  {
+    "action_type": "suggest_reorder_adjustment",
+    "auto_allowed": true,
+    "requires_human_approval": true,
+    "reason": "ERP or procurement changes must be reviewed by a human."
+  },
+  {
+    "action_type": "switch_supplier",
+    "auto_allowed": false,
+    "requires_human_approval": true,
+    "reason": "Supplier switching has contractual and operational implications."
+  },
+  {
+    "action_type": "approve_expedite_spend",
+    "auto_allowed": false,
+    "requires_human_approval": true,
+    "reason": "Financial approval is required for expedite spend."
+  }
+]

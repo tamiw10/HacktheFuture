@@ -1,0 +1,14 @@
+[
+  {
+    "plant_id": "PLANT001",
+    "part_id": "PART001",
+    "days_remaining": 4,
+    "on_hand_units": 480
+  },
+  {
+    "plant_id": "PLANT002",
+    "part_id": "PART001",
+    "days_remaining": 10,
+    "on_hand_units": 1200
+  }
+]

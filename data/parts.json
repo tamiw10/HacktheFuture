@@ -1,0 +1,11 @@
+[
+  {
+    "part_id": "PART001",
+    "part_name": "Brake Control Module BCM-47",
+    "category": "Brake Electronics",
+    "criticality": "high",
+    "substitutable": false,
+    "daily_usage_units": 120,
+    "used_in_vehicle_lines": ["Falcon", "Orion"]
+  }
+]

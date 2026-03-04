@@ -1,0 +1,48 @@
+[
+  {
+    "manufacturer_id": "MFG001",
+    "name": "NorthDrive Auto Parts",
+    "supplier_concentration_risk": {
+      "single_source": true
+    },
+    "regional_exposure": {
+      "primary_region": "Mexico"
+    },
+    "lead_time_sensitivity": {
+      "max_tolerable_delay_days_for_critical_parts": 3
+    },
+    "inventory_buffer_policy": {
+      "lean_inventory_strategy": true
+    },
+    "contract_structures": {
+      "expedite_allowed": true,
+      "alternate_supplier_preapproved": false
+    },
+    "customer_service_levels": {
+      "strict_sla": true
+    }
+  },
+  {
+    "manufacturer_id": "MFG002",
+    "name": "Apex Motion Systems",
+    "supplier_concentration_risk": {
+      "single_source": false
+    },
+    "regional_exposure": {
+      "primary_region": "North America"
+    },
+    "lead_time_sensitivity": {
+      "max_tolerable_delay_days_for_critical_parts": 8
+    },
+    "inventory_buffer_policy": {
+      "lean_inventory_strategy": false
+    },
+    "contract_structures": {
+      "expedite_allowed": true,
+      "alternate_supplier_preapproved": true
+    },
+    "customer_service_levels": {
+      "strict_sla": false
+    }
+  }
+]

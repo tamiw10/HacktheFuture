@@ -1,0 +1,18 @@
+[
+  {
+    "option_id": "MIT001",
+    "part_id": "PART001",
+    "option_type": "expedite_shipment",
+    "available": true,
+    "estimated_time_saved_days": 2,
+    "estimated_cost_increase_pct": 22
+  },
+  {
+    "option_id": "MIT002",
+    "part_id": "PART001",
+    "option_type": "backup_supplier",
+    "available": true,
+    "estimated_time_saved_days": 3,
+    "estimated_cost_increase_pct": 15
+  }
+]

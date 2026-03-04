@@ -1,0 +1,4 @@
+# cd /Users/student/Desktop/HacktheFuture/app
+#    source ../.venv/bin/activate
+#    export SSL_CERT_FILE=$(python -m certifi)
+#    adk web
