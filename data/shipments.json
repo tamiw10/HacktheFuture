@@ -5,32 +5,10 @@
     "supplier_id": "SUP001",
     "part_id": "PART001",
     "destination_plant_id": "PLANT001",
-    "status": "delayed",
-    "delay_days": 6,
+    "status": "in_transit",
+    "delay_days": 0,
     "expedite_available": true,
-    "expedite_cost_increase_pct": 22,
-    "disruption_signals": [
-      {
-        "signal_id": "WX-20260304234337",
-        "signal_type": "weather_alert",
-        "summary": "Severe weather affecting cross-border logistics operations."
-      },
-      {
-        "signal_id": "BRD-20260304234337",
-        "signal_type": "border_congestion",
-        "summary": "Border congestion causing customs processing delays."
-      },
-      {
-        "signal_id": "SUP-20260304234337",
-        "signal_type": "supplier_notice",
-        "summary": "SUP001 reports reduced output for Brake Control Module BCM-47."
-      },
-      {
-        "signal_id": "SHIP-20260304234337",
-        "signal_type": "shipping_delay_update",
-        "summary": "Carrier reports route congestion affecting SHIP001 and SHIP002."
-      }
-    ]
+    "expedite_cost_increase_pct": 22
   },
   {
     "shipment_id": "SHIP002",
@@ -38,26 +16,9 @@
     "supplier_id": "SUP002",
     "part_id": "PART001",
     "destination_plant_id": "PLANT002",
-    "status": "delayed",
-    "delay_days": 5,
+    "status": "in_transit",
+    "delay_days": 0,
     "expedite_available": true,
-    "expedite_cost_increase_pct": 22,
-    "disruption_signals": [
-      {
-        "signal_id": "WX-20260304234337",
-        "signal_type": "weather_alert",
-        "summary": "Severe weather affecting cross-border logistics operations."
-      },
-      {
-        "signal_id": "BRD-20260304234337",
-        "signal_type": "border_congestion",
-        "summary": "Border congestion causing customs processing delays."
-      },
-      {
-        "signal_id": "SHIP-20260304234337",
-        "signal_type": "shipping_delay_update",
-        "summary": "Carrier reports route congestion affecting SHIP001 and SHIP002."
-      }
-    ]
+    "expedite_cost_increase_pct": 22
   }
 ]
