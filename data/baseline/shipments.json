@@ -7,8 +7,8 @@
     "destination_plant_id": "PLANT001",
     "status": "in_transit",
     "delay_days": 0,
-    "expedite_available": true,
-    "expedite_cost_increase_pct": 22
+    "base_transport_cost_cad": 12000,
+    "expedite_available": true
   },
   {
     "shipment_id": "SHIP002",
@@ -18,7 +18,7 @@
     "destination_plant_id": "PLANT002",
     "status": "in_transit",
     "delay_days": 0,
-    "expedite_available": true,
-    "expedite_cost_increase_pct": 22
+    "base_transport_cost_cad": 12000,
+    "expedite_available": true
   }
 ]

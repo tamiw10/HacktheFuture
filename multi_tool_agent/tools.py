@@ -3,6 +3,16 @@ from pathlib import Path
 from .risk_engine import assess_risk_logic
 from .perception import get_signals_for_shipment, get_recent_signals
 
+from .metrics_engine import (
+    compare_scenarios_with_without_agent,
+    estimate_downtime_cost_cad,
+    estimate_margin_at_risk_cad,
+    estimate_revenue_at_risk_cad,
+    estimate_service_level_impact,
+    estimate_expedite_cost_cad,
+    estimate_sla_penalty_cad,
+)
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 
@@ -68,6 +78,10 @@ def get_mitigation_options(part_id: str) -> list:
     return [option for option in options if option["part_id"] == part_id]
 
 
+def get_business_parameters() -> dict:
+    return _load_json("business_parameters.json")
+
+
 def handle_disruption_signal(shipment_id: str) -> dict:
     shipment = get_shipment_status(shipment_id)
     if "error" in shipment:
@@ -93,6 +107,8 @@ def handle_disruption_signal(shipment_id: str) -> dict:
     reorder_suggestion = suggest_reorder_adjustment(manufacturer_id, shipment_id)
     approval_boundaries = get_human_approval_boundaries()
     similar_past_cases = get_similar_past_cases(part_id, limit=3)
+    business_impact = calculate_business_impact(manufacturer_id, shipment_id)
+    with_without_agent = compare_with_without_agent(manufacturer_id, shipment_id)
 
     risk_level = risk_result["risk_assessment"]["risk_level"]
     outcome = (
@@ -107,6 +123,8 @@ def handle_disruption_signal(shipment_id: str) -> dict:
         "manufacturer_id": manufacturer_id,
         "manufacturer_name": manufacturer_profile["name"],
         "risk_result": risk_result,
+        "business_impact": business_impact,
+        "with_without_agent": with_without_agent,
         "escalation_message": escalation,
         "supplier_email": supplier_email,
         "reorder_suggestion": reorder_suggestion,
@@ -158,8 +176,30 @@ def build_case_summary(manufacturer_id: str, shipment_id: str) -> dict:
 
         if option["option_type"] == "backup_supplier" and not manufacturer_allows_backup:
             option_copy["available"] = False
+            option_copy["unavailable_reason"] = "No preapproved alternate supplier for this manufacturer."
 
         filtered_mitigations.append(option_copy)
+
+    params = get_business_parameters()
+    exp_meta = estimate_expedite_cost_cad(
+        {
+            "shipment": shipment,
+            "mitigation_options": filtered_mitigations,
+            "inventory": inventory,
+            "part": part,
+        },
+        params
+    )
+
+    for opt in filtered_mitigations:
+        if opt.get("option_type") == "expedite_shipment":
+            # Keep computed fields
+            opt["computed_cost_increase_pct"] = exp_meta["expedite_premium_pct"]
+            opt["computed_cost_increase_cad"] = exp_meta["expedite_premium_cad"]
+
+            # ALSO overwrite legacy keys so the LLM doesn't use stale values
+            opt["estimated_cost_increase_pct"] = exp_meta["expedite_premium_pct"]
+            opt["estimated_cost_increase_cad"] = exp_meta["expedite_premium_cad"]
 
     # ALWAYS use the full signal records from disruption_signals.json
     disruption_signal_payload = get_disruption_signals(shipment_id=shipment_id)
@@ -459,6 +499,45 @@ def suggest_reorder_adjustment(manufacturer_id: str, shipment_id: str) -> dict:
         "approval_required": approval["requires_human_approval"],
         "approval_note": approval["reason"]
     }
+
+
+def calculate_business_impact(manufacturer_id: str, shipment_id: str) -> dict:
+    result = assess_risk(manufacturer_id, shipment_id)
+    if "error" in result:
+        return result
+
+    case_summary = result["case_summary"]
+    params = get_business_parameters()
+
+    revenue_at_risk_cad = estimate_revenue_at_risk_cad(case_summary, params, use_mitigation=False)
+    margin_at_risk_cad = estimate_margin_at_risk_cad(case_summary, params, use_mitigation=False)
+    service_level = estimate_service_level_impact(case_summary, params, use_mitigation=False)
+    expedite_cost = estimate_expedite_cost_cad(case_summary, params)
+    sla_penalty_cad = estimate_sla_penalty_cad(case_summary, params, use_mitigation=False)
+    downtime_cost_cad = estimate_downtime_cost_cad(case_summary, params, use_mitigation=False)
+
+    return {
+        "currency": "CAD",
+        "revenue_at_risk_cad": round(revenue_at_risk_cad, 2),
+        "margin_at_risk_cad": round(margin_at_risk_cad, 2),
+        "service_level_drop_pct_points": round(service_level["service_level_drop_pct_points"], 2),
+        "late_units": service_level["late_units"],
+        "expedite_cost_meta": expedite_cost,
+        "sla_penalty_cad": round(sla_penalty_cad, 2),
+        "downtime_cost_cad": round(downtime_cost_cad, 2),
+    }
+
+
+def compare_with_without_agent(manufacturer_id: str, shipment_id: str) -> dict:
+    result = assess_risk(manufacturer_id, shipment_id)
+    if "error" in result:
+        return result
+
+    case_summary = result["case_summary"]
+    params = get_business_parameters()
+
+    comparison = compare_scenarios_with_without_agent(case_summary, params)
+    return comparison
 
 
 # Additional tools for disruption case logging and historical analysis

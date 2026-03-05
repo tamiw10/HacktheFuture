@@ -1,0 +1,17 @@
+{
+  "currency": "CAD",
+  "selling_price_per_unit_cad": 950,
+  "contribution_margin_per_unit_cad": 180,
+  "unit_cost_cad": 620,
+  "base_transport_cost_cad_default": 12000,
+
+  "expedite_multiplier_base": 1.10,
+  "expedite_multiplier_per_delay_day": 0.02,
+
+  "sla_penalty_per_unit_cad": 75,
+  "line_downtime_cost_per_day_cad": 50000,
+  "carrying_cost_factor_for_window": 0.02,
+  "committed_units_in_window": 720,
+  "manual_response_delay_days": 1,
+  "agent_response_delay_days": 0
+}
