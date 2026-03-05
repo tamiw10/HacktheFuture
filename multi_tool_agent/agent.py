@@ -20,6 +20,9 @@ from .tools import (
     get_disruption_history,
     log_disruption_case,
     get_similar_past_cases,
+    get_business_parameters,
+    calculate_business_impact,
+    compare_with_without_agent,
 )
 
 root_agent = Agent(
@@ -61,6 +64,18 @@ root_agent = Agent(
         "<best next step and why>\n\n"
         "## Reorder / Inventory Adjustment\n"
         "<state whether a reorder or temporary stock build adjustment is recommended>\n\n"
+        "## Business Impact (CAD)\n"
+        "- **Revenue at risk (CAD):** <amount>\n"
+        "- **Margin at risk (CAD):** <amount>\n"
+        "- **Service level drop:** <percentage points>\n"
+        "- **Estimated downtime cost (CAD):** <amount>\n"
+        "- **Estimated SLA penalty (CAD):** <amount>\n"
+        "- **Estimated expedite premium (CAD):** <amount>\n\n"
+        "## With vs Without Agent\n"
+        "- **Revenue loss prevented (CAD):** <amount>\n"
+        "- **Service level protection:** <percentage points>\n"
+        "- **Cost optimization (CAD):** <amount>\n"
+        "- **Operational continuity improvement:** <days>\n\n"
         "## Escalation Message\n"
         "<short professional operational alert if risk is High or Critical; otherwise say no escalation is needed>\n\n"
         "## Draft Supplier Email\n"
@@ -73,6 +88,7 @@ root_agent = Agent(
 
         "Rules: "
         "Do not recommend unavailable options. "
+        "All monetary values must be shown in CAD. When presenting business impact, use the business parameter assumptions and clearly keep the explanation consistent with those inputs. "
         "If inventory covers the delay, avoid unnecessary urgent action. "
         "If inventory does not cover the delay for a critical part, prioritize actions that reduce stockout risk. "
         "If expedited shipment only removes the stockout gap but creates no safety buffer, say that clearly. "
@@ -101,5 +117,8 @@ root_agent = Agent(
         get_disruption_history,
         log_disruption_case,
         get_similar_past_cases,
+        get_business_parameters,
+        calculate_business_impact,
+        compare_with_without_agent,
     ],
 )

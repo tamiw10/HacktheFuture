@@ -5,7 +5,7 @@
     "option_type": "expedite_shipment",
     "available": true,
     "estimated_time_saved_days": 2,
-    "estimated_cost_increase_pct": 22
+    "expedited_transport_cost_cad": 14640
   },
   {
     "option_id": "MIT002",
