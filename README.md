@@ -25,7 +25,7 @@ This is for Hack the Future 2026 ran by Rotman Commerce FinTech Association and 
 ```bash
 # Clone the repository
 git clone https://github.com/tamiw10/TheLastBrainCell.git
-cd HacktheFuture
+cd TheLastBrainCell
 
 # Create and activate virtual environment
 python -m venv .venv
