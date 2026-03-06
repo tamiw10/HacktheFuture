@@ -21,7 +21,7 @@ An AI-powered supply chain risk agent for automotive manufacturers. It assesses 
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/HacktheFuture.git
+git clone https://github.com/tamiw10/HacktheFuture.git
 cd HacktheFuture
 
 # Create virtual environment
@@ -42,6 +42,7 @@ cp .env.example multi_tool_agent/.env
 
 ```bash
 source .venv/bin/activate
+python scripts/reset_demo_data.py
 python -m multi_tool_agent.signal_simulator
 ```
 
