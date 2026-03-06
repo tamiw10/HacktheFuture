@@ -15,6 +15,7 @@ FILES = [
     "suppliers.json",
     "approval_policy.json",
     "disruption_history.json",
+    "business_parameters.json",
 ]
 
 def init_baseline() -> None:

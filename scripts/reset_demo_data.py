@@ -15,6 +15,7 @@ FILES_TO_RESET = [
     "suppliers.json",
     "approval_policy.json",
     "disruption_history.json",
+    "business_parameters.json",
 ]
 
 def reset_demo_data() -> None:

@@ -41,6 +41,8 @@ cp multi_tool_agent/.env.example multi_tool_agent/.env
 
 This demo is designed to be reproducible: reset to a clean baseline, simulate disruption signals, then run the agent.
 
+1. **Simulate disruption signals** (run before prompting):
+
 ```bash
 # Activate venv if not already active
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate

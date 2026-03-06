@@ -20,6 +20,9 @@ from .tools import (
     get_disruption_history,
     log_disruption_case,
     get_similar_past_cases,
+    get_business_parameters,
+    calculate_business_impact,
+    compare_with_without_agent,
 )
 
 root_agent = Agent(
@@ -55,16 +58,30 @@ root_agent = Agent(
         "- <factor 2>\n"
         "- <factor 3>\n\n"
         "## Top Mitigation Options and Trade-offs\n"
-        "- <option name>: <availability>. <benefit>. <cost/trade-off>.\n"
-        "- <option name>: <availability>. <benefit>. <cost/trade-off>.\n\n"
+        "- <option name>: <available or unavailable>. <what it solves or why it cannot be used>. <remaining limitation>. <cost/trade-off>.\n"
+        "- <option name>: <available or unavailable>. <what it solves or why it cannot be used>. <remaining limitation>. <cost/trade-off>.\n\n"
         "## Recommended Immediate Action\n"
         "<best next step and why>\n\n"
         "## Reorder / Inventory Adjustment\n"
         "<state whether a reorder or temporary stock build adjustment is recommended>\n\n"
+        "## Business Impact (CAD)\n"
+        "- **Revenue at risk (CAD):** <amount>\n"
+        "- **Margin at risk (CAD):** <amount>\n"
+        "- **Service level drop:** <percentage points>\n"
+        "- **Estimated downtime cost (CAD):** <amount>\n"
+        "- **Estimated SLA penalty (CAD):** <amount>\n"
+        "- **Estimated expedite premium (CAD):** <amount>\n\n"
+        "## With vs Without Agent\n"
+        "- **Revenue loss prevented (CAD):** <amount>\n"
+        "- **Service level protection:** <percentage points>\n"
+        "- **Cost optimization (CAD):** <amount>\n"
+        "- **Operational continuity improvement:** <days>\n\n"
         "## Escalation Message\n"
         "<short professional operational alert if risk is High or Critical; otherwise say no escalation is needed>\n\n"
         "## Draft Supplier Email\n"
-        "<include subject, short body summary, and approval note if appropriate>\n\n"
+        "- **Subject:** <email subject>\n"
+        "- **Body:** <professional supplier-facing message>\n"
+        "- **Approval note:** <whether human approval is required before sending>\n\n"
         "## Human Approval Boundaries\n"
         "- <action>: <whether human approval is required and why>\n"
         "- <action>: <whether human approval is required and why>\n\n"
@@ -73,10 +90,14 @@ root_agent = Agent(
 
         "Rules: "
         "Do not recommend unavailable options. "
+        "All monetary values must be shown in CAD. When presenting business impact, use the business parameter assumptions and clearly keep the explanation consistent with those inputs. "
         "If inventory covers the delay, avoid unnecessary urgent action. "
         "If inventory does not cover the delay for a critical part, prioritize actions that reduce stockout risk. "
         "If expedited shipment only removes the stockout gap but creates no safety buffer, say that clearly. "
+        "Recommended Immediate Action should explain why the chosen action is the best immediate option, why other options were not selected for immediate use, what limitation remains after taking it, and whether human approval is required before execution. "
+        "For mitigation options, explicitly label unavailable options as unavailable and explain why they cannot be used immediately. Do not describe unavailable options as available. "
         "If a tool indicates human approval is required, state that clearly. "
+        "When drafting supplier email output, format Subject, Body, and Approval note on separate lines. "
         "Keep the tone professional, concise, and realistic. "
         "Do not mention tool names, internal logic, or implementation details."
     ),
@@ -101,5 +122,8 @@ root_agent = Agent(
         get_disruption_history,
         log_disruption_case,
         get_similar_past_cases,
+        get_business_parameters,
+        calculate_business_impact,
+        compare_with_without_agent,
     ],
 )
