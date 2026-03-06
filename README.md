@@ -66,7 +66,7 @@ export SSL_CERT_FILE=$(python -m certifi)
 Then rerun:
 
 ```bash
-adk web --port 8001
+adk web
 ```
 
 ## Suggested demo prompts
