@@ -55,7 +55,7 @@ python -m multi_tool_agent.signal_simulator
 adk web
 ```
 
-Open the UI at: http://127.0.0.1:8001
+Open the UI at: http://127.0.0.1:8000
 
 ### Optional: SSL fix (only if you see SSL/cert errors)
 
