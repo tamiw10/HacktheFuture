@@ -1,6 +1,8 @@
-# HacktheFuture – Automotive Supply Chain Risk Agent
+# The Last Brain Cell – Automotive Supply Chain Risk Agent
 
 An AI-powered supply chain risk agent for automotive manufacturers. It assesses disruptions, recommends mitigation options, and helps with escalation and supplier communication.
+
+This is for Hack the Future 2026 ran by Rotman Commerce FinTech Association and UofT Project Club.
 
 ## Features
 
@@ -22,7 +24,7 @@ An AI-powered supply chain risk agent for automotive manufacturers. It assesses 
 
 ```bash
 # Clone the repository
-git clone https://github.com/tamiw10/HacktheFuture.git
+git clone https://github.com/tamiw10/TheLastBrainCell.git
 cd HacktheFuture
 
 # Create and activate virtual environment
