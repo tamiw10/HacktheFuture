@@ -24,8 +24,8 @@ Built at Hack the Future 2026 ran by Rotman Commerce FinTech Association and Uof
 
 ```bash
 # Clone the repository
-git clone https://github.com/tamiw10/TheLastBrainCell.git
-cd TheLastBrainCell
+git clone https://github.com/tamiw10/supply-chain-disruption-response-agent.git
+cd supply-chain-disruption-response-agent
 
 # Create and activate virtual environment
 python -m venv .venv
@@ -96,7 +96,7 @@ adk web
 ## Project structure
 
 ```
-TheLastBrainCell/
+supply-chain-disruption-response-agent/
 ├── multi_tool_agent/      # Agent definition, tools, perception, metrics
 ├── data/                  # JSON data (shipments, inventory, suppliers, etc.)
 │   └── baseline/          # Clean baseline state for reproducible demos
