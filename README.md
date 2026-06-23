@@ -1,8 +1,8 @@
-# The Last Brain Cell – Automotive Supply Chain Risk Agent
+# Supply Chain Disruption Response Agent
 
-An AI-powered supply chain risk agent for automotive manufacturers. It assesses disruptions, recommends mitigation options, and helps with escalation and supplier communication.
+An AI-powered decision-support prototype for automotive supply-chain disruptions. It assesses risk, compares mitigation options, and supports escalation and supplier communication with human approval boundaries.
 
-This is for Hack the Future 2026 ran by Rotman Commerce FinTech Association and UofT Project Club.
+Built at Hack the Future 2026 ran by Rotman Commerce FinTech Association and UofT Project Club by Team "The Last Brain Cell".
 
 ## Features
 
